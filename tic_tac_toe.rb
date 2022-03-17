@@ -27,20 +27,15 @@ class Board
   def winner?
     3.times do |i|
       # Check horizontally.
-      if @marks[i] == @marks[i + 1] && marks[i + 1] == @marks[i + 2]
-        return true
+      return true if [@marks[i], @marks[i + 1], @marks[i + 2]].uniq.size == 1
       # Check vertically.
-      elsif @marks[i] == @marks[i + 3] && marks[i + 3] == @marks[i + 6]
-        return true
-      # Check diagonally.
-      elsif (i == 0) && (@marks[i] == @marks[i + 4]) && (@marks[i + 4] == @marks[i + 8])
-        return true
-      elsif (i == 2) && (@marks[i] == @marks[i + 2]) && (@marks[i + 2] == @marks[i + 4])
-        return true
-      else
-        return false
+      return true if [@marks[i], @marks[i + 3], @marks[i + 6]].uniq.size == 1
     end
+    # Check diagonally.
+    return true if [@marks[0], @marks[4], @marks[8]].uniq.size == 1
+    return true if [@marks[2], @marks[4], @marks[6]].uniq.size == 1
   end
+end
 
 # Loop the game until there is a winner.
 # Ask the player the location to place "X" or "O" on the board.
