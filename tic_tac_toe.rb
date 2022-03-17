@@ -65,14 +65,13 @@ class Board
   end
 end
 
-# Loop the game until there is a winner.
 PLAYER_X = "X"
 PLAYER_O = "O"
 board = Board.new
 player_turn = [PLAYER_O, PLAYER_X].sample
 
+# Loop the game until there is a winner.
 loop do
-  # Display the board.
   puts board.display
 
   # Ask the player the location to place "X" or "O" on the board.
